@@ -1,0 +1,58 @@
+group 'com.opun.oupay.flutteroupay'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    sourceSets {
+        main{
+            assets.srcDirs = ['src/main/assets']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support:support-v4:27+'
+    implementation fileTree(include:['*.jar'],dir:'libs')
+    implementation files('libs/fastjson-1.2.31.jar')
+    // 支付宝
+    implementation files('libs/alipaySdk-15.5.7-20181023110917.aar')
+    //银联
+    implementation files('libs/UPPayAssistEx.jar')
+    implementation files('libs/UPPayPluginExPro.jar')
+    //implementation (name: 'alipaySdk-15.5.7-20181023110917', ext: 'aar')
+    // 微信
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+}
