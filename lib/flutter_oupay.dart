@@ -8,19 +8,24 @@ import 'package:flutter_oupay/oupay_result.dart';
 
 class FlutterOupay {
   static const MethodChannel _channel =
-      const MethodChannel('flutter_oupay');
+  const MethodChannel('flutter_oupay');
 
   static bool  _options_init = false;
-  static final OupayOptions _options = new OupayOptions();
+  static OupayOptions _options;
 
-  static void setOupayOptions({bool isSandbox,String unpayId,String alipayId,String wechatId,String cmbchinaId}){
-    _options.setOptions(isSandbox:isSandbox,unpayId:unpayId,alipayId:alipayId,wechatId:wechatId,cmbchinaId:cmbchinaId);
+  static void setOupayOptions(final OupayOptions opt){
+    _options = opt;
     _options_init = true;
   }
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
+  }
+
+  //检查支付权限
+  static void get checkOUPayPermission async {
+    final String version = await _channel.invokeMethod('getPlatformVersion');
   }
 
   /**
@@ -72,7 +77,7 @@ class FlutterOupay {
     try{
       var res =  await _channel.invokeMethod('unionPay',<String, dynamic>{
         'payInfo': payInfo,
-        'isSandbox': _options.isSandbox
+        'isSandbox': _options.isSandboxByUn
       });
 
       final OupayResult oupayRest = new OupayResult();
@@ -100,7 +105,7 @@ class FlutterOupay {
     try{
       var res =  await _channel.invokeMethod('aliPay',<String, dynamic>{
         'payInfo': payInfo,
-        'isSandbox': _options.isSandbox,
+        'isSandbox': _options.isSandboxByAli,
         'urlScheme': _options.alipayId
       });
 

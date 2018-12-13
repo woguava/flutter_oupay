@@ -36,6 +36,7 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
   public void onMethodCall(MethodCall call, Result result) {
     //检验权限
     if( !permissionManager.requestPermission() ){
+      result.error("oupay","check permission fail",null);
       return;
     }
 
