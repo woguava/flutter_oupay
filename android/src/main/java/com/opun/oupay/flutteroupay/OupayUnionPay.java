@@ -43,21 +43,29 @@ public class OupayUnionPay implements PluginRegistry.ActivityResultListener{
             g_callback.error("oupay_unionpay_err", "Fail to get result with intent", null);
             return false;
         }
-        /*
-         * 支付控件返回字符串:success、fail、cancel 分别代表支付成功，支付失败，支付取消
-         */
-        Map<String, String>  resultMap = new HashMap<String,String>();
-        String payResult = intent.getExtras().getString("pay_result");
-        resultMap.put("pay_result", payResult);
 
-        if (payResult.equalsIgnoreCase("success")) {
-            if (intent.hasExtra("result_data")) {
-                String resultData = intent.getExtras().getString("result_data");
-                resultMap.put("result_data", resultData);
-            }
+        switch (requestCode){
+            case 10:{
+                /*
+                 * 支付控件返回字符串:success、fail、cancel 分别代表支付成功，支付失败，支付取消
+                 */
+                Map<String, String>  resultMap = new HashMap<String,String>();
+                String payResult = intent.getExtras().getString("pay_result");
+                resultMap.put("pay_result", payResult);
+
+                if (payResult.equalsIgnoreCase("success")) {
+                    if (intent.hasExtra("result_data")) {
+                        String resultData = intent.getExtras().getString("result_data");
+                        resultMap.put("result_data", resultData);
+                    }
+                }
+
+                g_callback.success(resultMap);
+              }
+              break;
+            default:
+                return false;
         }
-
-        g_callback.success(resultMap);
 
         return true;
     }
