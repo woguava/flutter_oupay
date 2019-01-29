@@ -21,7 +21,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     //initPlatformState();
-    FlutterOupay.setOupayOptions(isSandbox:true,unpayId:'unionpayid',alipayId:'alipayid',wechatId:'wxf9909bde17439ac2',cmbchinaId:'cmbchinaid');
+    OupayOptions opt = new OupayOptions(isSandboxByUn:true,isSandboxByAli:true,wechatId:'wx06231605d005bcbe',isSandboxByCmb:true,cmbAppId:'0010000516');
+    FlutterOupay.setOupayOptions(opt);
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.

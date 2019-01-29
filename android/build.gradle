@@ -52,7 +52,8 @@ dependencies {
     //银联
     implementation files('libs/UPPayAssistEx.jar')
     implementation files('libs/UPPayPluginExPro.jar')
-    //implementation (name: 'alipaySdk-15.5.7-20181023110917', ext: 'aar')
     // 微信
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    // 招行一网通
+    implementation files('libs/cmbsdk-release-1.0.aar')
 }

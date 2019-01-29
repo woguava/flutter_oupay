@@ -40,7 +40,6 @@ public class OupayUnionPay implements PluginRegistry.ActivityResultListener{
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (null == intent) {
-            g_callback.error("oupay_unionpay_err", "Fail to get result with intent", null);
             return false;
         }
 
@@ -61,8 +60,7 @@ public class OupayUnionPay implements PluginRegistry.ActivityResultListener{
                 }
 
                 g_callback.success(resultMap);
-              }
-              break;
+            } break;
             default:
                 return false;
         }

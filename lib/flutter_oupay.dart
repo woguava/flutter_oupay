@@ -8,7 +8,7 @@ import 'package:flutter_oupay/oupay_result.dart';
 
 class FlutterOupay {
   static const MethodChannel _channel =
-  const MethodChannel('flutter_oupay');
+      const MethodChannel('flutter_oupay');
 
   static bool  _options_init = false;
   static OupayOptions _options;
@@ -21,11 +21,6 @@ class FlutterOupay {
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
     return version;
-  }
-
-  //检查支付权限
-  static void get checkOUPayPermission async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
   }
 
   /**
@@ -157,8 +152,25 @@ class FlutterOupay {
    * 招行
    */
   static Future<OupayResult> _cmbchinapay(dynamic payInfo) async{
-    final OupayResult oupayRest = new OupayResult();
-    oupayRest.setOupayRest(-1, "招行支付渠道暂未开通");
-    return oupayRest;
+    try{
+      var res =  await _channel.invokeMethod('cmbchinaPay',<String, dynamic>{
+        'payInfo': payInfo,
+        'appid': _options.cmbAppId,
+        'isSandbox': _options.isSanboxByCmb
+      });
+
+      final OupayResult oupayRest = new OupayResult();
+      if( res['mRespCode'] == "0" ){
+        oupayRest.setOupayRest(0, "支付完成",payChannel:'cmbchinapay',channelData:res );
+      }else{
+        oupayRest.setOupayRest(-1, "支付失败",payChannel:'cmbchinapay',channelData:res );
+      }
+      return oupayRest;
+    } on PlatformException catch (e) {
+      print(e);
+      final OupayResult oupayRest = new OupayResult();
+      oupayRest.setOupayRest(-1, "招行一网通支付异常[$e]");
+      return oupayRest;
+    }
   }
 }

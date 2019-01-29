@@ -9,11 +9,15 @@ class OupayOptions{
   //微信
   bool _isSandboxByWechat;
   String _wechatId;
+  //招行一网通
+  bool _isSandboxByCmb;
+  String _cmbAppId;
 
   OupayOptions({bool isSandboxByUn:false,String unpayId:'unionpayappid',
     bool isSandboxByAli:false,String alipayId:'alipayappid',
-    bool isSandboxByWechat:false, String wechatId:'wxappid'
-  }){
+    bool isSandboxByWechat:false, String wechatId:'wxappid',
+    bool isSandboxByCmb:false,String cmbAppId:'cmbappid'
+    }){
 
     this._isSandboxByUn = isSandboxByUn;
     this._unpayId = unpayId;
@@ -23,6 +27,9 @@ class OupayOptions{
 
     this._isSandboxByWechat = isSandboxByWechat;
     this._wechatId = wechatId;
+
+    this._isSandboxByCmb = isSandboxByCmb;
+    this._cmbAppId = cmbAppId;
   }
 
   String get wechatId => _wechatId;
@@ -36,6 +43,10 @@ class OupayOptions{
   String get unpayId => _unpayId;
 
   bool get isSandboxByUn => _isSandboxByUn;
+
+  String get cmbAppId => _cmbAppId;
+
+  bool get isSanboxByCmb => _isSandboxByCmb;
 
 
 }

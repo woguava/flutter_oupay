@@ -13,6 +13,7 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
   private final OupayUnionPay oupayUnionPay;
   private final OupayAlipay oupayAlipay;
   private final OupayWechat oupayWechat;
+  private final OupayCMBPay oupayCmbPay;
 
   private FlutterOupayPlugin(Registrar registrar){
     this.registrar = registrar;
@@ -24,6 +25,8 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
 
     oupayAlipay = new OupayAlipay(registrar.activity());
     oupayWechat = new OupayWechat(registrar.activeContext());
+
+    oupayCmbPay = new OupayCMBPay(registrar.activity());
   }
 
   /** Plugin registration. */
@@ -58,7 +61,13 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
       String appid = call.argument("appid");
 
       oupayWechat.starPay(appid,payInfo,result);
-    } else {
+    }else if (call.method.equals("cmbchinaPay")) {
+      String payInfo = call.argument("payInfo");
+      String appid = call.argument("appid");
+      boolean isSandbox = call.argument("isSandbox");
+
+      oupayCmbPay.starPay(appid,payInfo,isSandbox,result);
+    }else {
       result.notImplemented();
     }
   }
