@@ -1,10 +1,16 @@
 package com.opun.oupay.flutteroupay;
 
+import com.opun.oupay.flutteroupay.cmbapi.CmbRegister;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
-import com.opun.oupay.flutteroupay.cmbapi.CmbRegister;
+import java.util.HashMap;
+import java.util.Map;
+
 import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.PluginRegistry;
 
 import cmbapi.CMBApi;
 import cmbapi.CMBApiFactory;
@@ -13,12 +19,14 @@ import cmbapi.CMBRequest;
 import cmbapi.CMBResponse;
 import cmbapi.CMBPayCallback;
 
-public class OupayCMBPay {
+
+public class OupayCMBPay  implements PluginRegistry.ActivityResultListener{
     private final Activity g_activity;
 
     public OupayCMBPay(Activity activity){
         g_activity = activity;
     }
+
 
     // 注册
     public void registerCMB(final String cmbAppId){
@@ -54,6 +62,28 @@ public class OupayCMBPay {
         } catch (Exception e) {
             result.error("oupay_cmbpay_err", e.getMessage(), null);
         }
+    }
+
+    @Override
+    public boolean onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (null == intent) {
+            return false;
+        }
+
+        if(3 == requestCode && 2 == resultCode){
+            Map<String, String> resultMap = new HashMap<String,String>();
+            String respCode = intent.getExtras().getString("respcode");
+            String respMessage = intent.getExtras().getString("respmsg");
+            resultMap.put("respCode", respCode);
+            resultMap.put("respMessage", respMessage);
+
+            Log.d("OupayCMBPay", "onActivityResult: " + resultMap.toString());
+
+            CmbRegister.getResult().success(resultMap);
+            return true;
+        }
+
+        return false;
     }
 
 }

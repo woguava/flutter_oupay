@@ -27,6 +27,7 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
     oupayWechat = new OupayWechat(registrar.activeContext());
 
     oupayCmbPay = new OupayCMBPay(registrar.activity());
+    registrar.addActivityResultListener(oupayCmbPay);
   }
 
   /** Plugin registration. */

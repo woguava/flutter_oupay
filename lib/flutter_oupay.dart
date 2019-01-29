@@ -160,7 +160,7 @@ class FlutterOupay {
       });
 
       final OupayResult oupayRest = new OupayResult();
-      if( res['mRespCode'] == "0" ){
+      if( res['respCode'] == "0" ){
         oupayRest.setOupayRest(0, "支付完成",payChannel:'cmbchinapay',channelData:res );
       }else{
         oupayRest.setOupayRest(-1, "支付失败",payChannel:'cmbchinapay',channelData:res );
