@@ -72,7 +72,8 @@ class FlutterOupay {
     try{
       var res =  await _channel.invokeMethod('unionPay',<String, dynamic>{
         'payInfo': payInfo,
-        'isSandbox': _options.isSandboxByUn
+        'isSandbox': _options.isSandboxByUn,
+        'urlScheme': _options.unpayId
       });
 
       final OupayResult oupayRest = new OupayResult();
