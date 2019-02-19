@@ -106,9 +106,9 @@ class FlutterOupay {
       });
 
       final OupayResult oupayRest = new OupayResult();
-      if( res['resultStatus'] == "9000" || res['resultStatus'] == "8000" || res['resultStatus'] == "6004"){
+      if( res['resultStatus'].toString() == "9000" ){
         oupayRest.setOupayRest(0, "支付完成",payChannel:'alipay',channelData:res );
-      }else if( res['resultStatus'] == "6001"){
+      }else if( res['resultStatus'].toString() == "6001"){
         oupayRest.setOupayRest(-2, "用户取消",payChannel:'alipay',channelData:res );
       }else{
         oupayRest.setOupayRest(-1, "支付失败",payChannel:'alipay',channelData:res );
@@ -133,9 +133,9 @@ class FlutterOupay {
       });
 
       final OupayResult oupayRest = new OupayResult();
-      if( res['errCode'] == "0" ){
+      if( res['errCode'].toString() == "0" ){
         oupayRest.setOupayRest(0, "支付完成",payChannel:'wechatpay',channelData:res );
-      }else if( res['errCode'] == "-2"){
+      }else if( res['errCode'].toString() == "-2"){
         oupayRest.setOupayRest(-2, "用户取消",payChannel:'wechatpay',channelData:res );
       }else{
         oupayRest.setOupayRest(-1, "支付失败",payChannel:'wechatpay',channelData:res );
@@ -161,7 +161,7 @@ class FlutterOupay {
       });
 
       final OupayResult oupayRest = new OupayResult();
-      if( res['respCode'] == "0" ){
+      if( res['mRespCode'].toString() == "0" ){
         oupayRest.setOupayRest(0, "支付完成",payChannel:'cmbchinapay',channelData:res );
       }else{
         oupayRest.setOupayRest(-1, "支付失败",payChannel:'cmbchinapay',channelData:res );

@@ -74,8 +74,9 @@ public class OupayCMBPay  implements PluginRegistry.ActivityResultListener{
             Map<String, String> resultMap = new HashMap<String,String>();
             String respCode = intent.getExtras().getString("respcode");
             String respMessage = intent.getExtras().getString("respmsg");
-            resultMap.put("respCode", respCode);
-            resultMap.put("respMessage", respMessage);
+
+            resultMap.put("mRespCode", respCode);
+            resultMap.put("mRespMsg", respMessage);
 
             Log.d("OupayCMBPay", "onActivityResult: " + resultMap.toString());
 

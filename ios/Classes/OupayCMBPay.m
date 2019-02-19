@@ -74,7 +74,7 @@ static const NSDictionary * __production = nil;
 #pragma mark - CMBApiDelegate
 
 - (void)onResp:(CMBResponse *)resp {
-    NSDictionary * resultString = @{@"respCode":[NSString stringWithFormat:@"%d",resp.respCode],@"respMessage":resp.respMessage};
+    NSDictionary * resultString = @{@"mRespCode":[NSString stringWithFormat:@"%d",resp.respCode],@"mRespMsg":resp.respMessage};
     NSLog(@"招行返回支付结果：%@",resultString);
     self.__result( resultString );
 }
