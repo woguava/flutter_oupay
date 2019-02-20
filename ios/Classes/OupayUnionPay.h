@@ -6,6 +6,7 @@
 
 @interface OupayUnionPay : NSObject
 
++ (BOOL) checkInstallApp: (NSString*)appId;
 + (void) startPay: (NSString*)payInfo isSandbox:(BOOL)isSandbox urlScheme:(NSString*)urlScheme viewCtrl:(UIViewController *)viewCtrl result:(FlutterResult)result;
 + (BOOL) handleOpenURL: (NSURL*)url result:(FlutterResult)result;
 

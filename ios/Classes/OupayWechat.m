@@ -24,6 +24,9 @@ static BOOL __isRegister = NO;
     return dic;
 }
 
++ (BOOL) checkInstallApp: (NSString*)appId {
+    return [self isInstalled:appId];
+}
 
 + (BOOL) isInstalled:(NSString*)appId {
     if(nil == wechat_appId)

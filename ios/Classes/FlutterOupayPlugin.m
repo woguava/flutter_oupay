@@ -42,8 +42,22 @@ __weak FlutterOupayPlugin* __FlutterOupayPlugin;
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   self.__result = result;
 
-  if ([@"getPlatformVersion" isEqualToString:call.method]) {
-    result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
+  if ([@"checkInstallApps" isEqualToString:call.method]) {
+      NSString * unpayAppid = call.arguments[@"unpayAppid"];
+      NSString * alipayAppid = call.arguments[@"alipayAppid"];
+      NSString * wechatAppid = call.arguments[@"wechatAppid"];
+      NSString * cmbAppid = call.arguments[@"cmbAppid"];
+
+      NSNumber *boolUppay = [NSNumber numberWithBool:[OupayUnionPay checkInstallApp:unpayAppid]];
+      NSNumber *boolAlipay = [NSNumber numberWithBool:[OupayAlipay checkInstallApp:alipayAppid]];
+      NSNumber *boolWechat = [NSNumber numberWithBool:[OupayWechat checkInstallApp:wechatAppid]];
+      NSNumber *boolCmb = [NSNumber numberWithBool:[OupayCMBPay checkInstallApp:cmbAppid]];
+      
+      
+      NSDictionary * resultDict = @{@"unpayApp":boolUppay,@"alipayApp":boolAlipay,
+                        @"wechatApp":boolWechat,@"cmbApp":boolCmb};
+
+      result(resultDict);
   } else if ([@"unionPay" isEqualToString:call.method]) {
     NSString * payInfo = call.arguments[@"payInfo"];
     NSNumber * isSandbox = call.arguments[@"isSandbox"];

@@ -1,6 +1,10 @@
 package com.opun.oupay.flutteroupay;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.net.Uri;
+
 import java.util.Map;
 import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.PayTask;
@@ -12,6 +16,14 @@ public class OupayAlipay {
 
     public OupayAlipay(Activity activity){
         this.g_activity = activity;
+    }
+
+    //检测APP是否安装
+    public boolean checkInstallApp(final String appId){
+        Uri uri = Uri.parse("alipays://platformapi/startApp");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        ComponentName componentName = intent.resolveActivity(g_activity.getPackageManager());
+        return componentName != null;
     }
 
     // 调起支付

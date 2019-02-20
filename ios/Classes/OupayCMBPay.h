@@ -9,6 +9,7 @@
 @property (readwrite,copy,nonatomic) FlutterResult __result;
 + (instancetype)sharedManager;
 
++ (BOOL) checkInstallApp: (NSString*)appId;
 + (void) startPay:(NSString*)appId payInfo:(NSString*)payInfo isSandbox:(BOOL)isSandbox viewCtrl:(UIViewController *)viewCtrl   result:(FlutterResult)result;
 + (BOOL) handleOpenURL: (NSURL*)url result:(FlutterResult)result;
 

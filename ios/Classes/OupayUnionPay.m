@@ -4,6 +4,12 @@
 
 @implementation OupayUnionPay
 
+
++ (BOOL) checkInstallApp: (NSString*)appId {
+    return [[UPPaymentControl defaultControl] isPaymentAppInstalled];
+}
+
+
 + (void) startPay: (NSString*)payInfo isSandbox:(BOOL)isSandbox urlScheme:(NSString*)urlScheme viewCtrl:(UIViewController *)viewCtrl result:(FlutterResult)result {
    //获取模式类型 00 生产 01 测试
     NSString* mode = @"00";

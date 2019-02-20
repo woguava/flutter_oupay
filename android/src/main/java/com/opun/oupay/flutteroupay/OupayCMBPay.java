@@ -36,6 +36,13 @@ public class OupayCMBPay  implements PluginRegistry.ActivityResultListener{
         }
     }
 
+    //检测APP是否安装
+    public boolean checkInstallApp(final String appId){
+        registerCMB(appId);
+        CMBApi cmbApi = CmbRegister.getCMBApi();
+        return  cmbApi.isCMBAppInstalled();
+    }
+
     // 调起支付
     public void starPay(String appid, String payInfo, boolean isSandbox, MethodChannel.Result result) {
         CmbRegister.setResult(result);

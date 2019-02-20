@@ -1,5 +1,8 @@
 package com.opun.oupay.flutteroupay;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -44,8 +47,19 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
       return;
     }
 
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
+    if (call.method.equals("checkInstallApps")) {
+      String unpayAppid = call.argument("unpayAppid");
+      String alipayAppid = call.argument("alipayAppid");
+      String wechatAppid = call.argument("wechatAppid");
+      String cmbAppid = call.argument("cmbAppid");
+
+      Map<String, Boolean> resultMap = new HashMap<String,Boolean>();
+      resultMap.put("unpayApp",oupayUnionPay.checkInstallApp(unpayAppid));
+      resultMap.put("alipayApp",oupayAlipay.checkInstallApp(alipayAppid));
+      resultMap.put("wechatApp",oupayWechat.checkInstallApp(wechatAppid));
+      resultMap.put("cmbApp",oupayCmbPay.checkInstallApp(cmbAppid));
+
+      result.success(resultMap);
     }else if (call.method.equals("unionPay")) {
       String payInfo = call.argument("payInfo");
       boolean isSandbox = call.argument("isSandbox");

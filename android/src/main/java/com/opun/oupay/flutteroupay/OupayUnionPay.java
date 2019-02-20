@@ -21,6 +21,11 @@ public class OupayUnionPay implements PluginRegistry.ActivityResultListener{
         this.g_activity = activity;
     }
 
+    //检测APP是否安装
+    public boolean checkInstallApp(final String appId){
+       return UPPayAssistEx.checkWalletInstalled(g_activity);
+    }
+
     // 调起支付
     public void startPay(final String payInfo,boolean isSandbox, final MethodChannel.Result callback) {
         this.g_callback = callback;

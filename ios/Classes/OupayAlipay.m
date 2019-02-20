@@ -4,6 +4,11 @@
 
 @implementation OupayAlipay
 
++ (BOOL) checkInstallApp: (NSString*)appId {
+    NSURL * alipay_app_url = [NSURL URLWithString:@"alipay://"];
+    return [[UIApplication sharedApplication] canOpenURL:alipay_app_url];
+}
+
 + (void) startPay: (NSString*)payInfo urlScheme:(NSString*)urlScheme result:(FlutterResult)result {
     //应用注册scheme,在AliSDKDemo-Info.plist定义URL types
     // NOTE: 调用支付结果开始支付

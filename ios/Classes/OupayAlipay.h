@@ -6,6 +6,7 @@
 
 @interface OupayAlipay : NSObject
 
++ (BOOL) checkInstallApp: (NSString*)appId;
 + (void) startPay: (NSString*)payInfo urlScheme:(NSString*)urlScheme result:(FlutterResult)result;
 + (BOOL) handleOpenURL: (NSURL*)url result:(FlutterResult)result;
 

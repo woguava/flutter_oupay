@@ -49,6 +49,10 @@ static const NSDictionary * __production = nil;
     }
 }
 
++ (BOOL) checkInstallApp: (NSString*)appId {
+    return [CMBApi isCMBAppInstalled];
+}
+
 + (void) startPay:(NSString*)appId payInfo:(NSString*)payInfo isSandbox:(BOOL)isSandbox viewCtrl:(UIViewController *)viewCtrl  result:(FlutterResult)result{
     OupayCMBPay* instance = [OupayCMBPay sharedManager];
     instance.__result = result;

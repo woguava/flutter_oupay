@@ -31,6 +31,11 @@ public class OupayWechat {
         return wxApi.isWXAppInstalled();
     }
 
+    //检测APP是否安装
+    public boolean checkInstallApp(final String appId){
+        return isInstalled(appId);
+    }
+
     public void starPay(final String wxAppId,final String payInfo, final MethodChannel.Result callback){
         WxRegister.setCallback(callback);
 

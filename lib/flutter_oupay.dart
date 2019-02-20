@@ -18,9 +18,14 @@ class FlutterOupay {
     _options_init = true;
   }
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  static Future<dynamic> get isInstallApps async {
+     var installApps = await _channel.invokeMethod('checkInstallApps',<String, dynamic>{
+      'unpayAppid': _options.unpayId,
+      'alipayAppid': _options.alipayId,
+      'wechatAppid': _options.wechatId,
+      'cmbAppid': _options.cmbAppId
+    });
+    return installApps;
   }
 
   /**

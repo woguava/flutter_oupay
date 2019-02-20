@@ -49,20 +49,22 @@
 			</array>
 		</dict>
 		<dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLName</key>
-            <string>cmbchinaschemes</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>0010000516</string>
-            </array>
-        </dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>cmbchinaschemes</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>0010000516</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>cmbmobilebank</string>
+		<string>alipay</string>
 		<string>uppaysdk</string>
 		<string>uppaywallet</string>
 		<string>uppayx1</string>
