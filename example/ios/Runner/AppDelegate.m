@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "GeneratedPluginRegistrant.h"
-#import "FlutterOupayPlugin.h"
+#import <flutter_oupay/FlutterOupayPlugin.h>
 
 @implementation AppDelegate
 

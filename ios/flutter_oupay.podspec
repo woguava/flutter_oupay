@@ -31,5 +31,8 @@ A oupay Flutter plugin.
 
   s.ios.deployment_target = '8.0'
 
+  s.static_framework = true
+
+  s.prefix_header_contents = '#import <WechatOpenSDK/WXApi.h>','#import <flutter_oupay/FlutterOupayPlugin.h>'
 end
 

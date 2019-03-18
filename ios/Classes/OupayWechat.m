@@ -1,4 +1,16 @@
-#import "OupayWechat.h"
+//#import "OupayWechat.h"
+#import <WechatOpenSDK/WXApi.h>
+
+@interface OupayWechat : NSObject<WXApiDelegate>
+
+@property (readwrite,copy,nonatomic) FlutterResult __result;
+
++ (BOOL) checkInstallApp: (NSString*)appId;
++ (void) startPay:(NSString*)appId payInfo:(NSString*)payInfo result:(FlutterResult)result ;
++ (BOOL) handleOpenURL: (NSURL*)url result:(FlutterResult)result;
+
+@end
+
 
 @implementation OupayWechat
 

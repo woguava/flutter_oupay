@@ -1,10 +1,9 @@
 #import <Flutter/Flutter.h>
-#import "WXApi.h"
 
 #ifndef FLUTTER_OUPAY_OUPAYWECHAT_H
 #define FLUTTER_OUPAY_OUPAYWECHAT_H
 
-@interface OupayWechat : NSObject<WXApiDelegate>
+@interface OupayWechat : NSObject
 
 @property (readwrite,copy,nonatomic) FlutterResult __result;
 
