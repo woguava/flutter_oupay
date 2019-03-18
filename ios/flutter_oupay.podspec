@@ -25,6 +25,7 @@ A oupay Flutter plugin.
   s.ios.vendored_libraries = 'UPPay/**/*.a'
   s.ios.frameworks = 'CFNetwork','SystemConfiguration'
   s.ios.libraries = 'stdc++','z'
+  s.preserve_paths = 'UPPay/*.a'
 
   # 招行
   s.ios.vendored_frameworks = 'CMBSDK.framework'
