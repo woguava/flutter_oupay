@@ -4,10 +4,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-
 import android.widget.Toast;
 import io.flutter.plugin.common.PluginRegistry;
+import androidx.core.app.ActivityCompat;
 
 
 public class PermissionManager implements PluginRegistry.RequestPermissionsResultListener{
