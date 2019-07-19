@@ -62,7 +62,7 @@ dependencies {
     implementation fileTree(include:['*.jar'],dir:'libs')
     implementation files('libs/fastjson-1.2.31.jar')
     // 支付宝
-    implementation files('libs/alipaySdk-15.5.7-20181023110917.aar')
+    implementation files('libs/alipaySdk-15.6.4-20190611174359-noUtdid.aar')
     //银联
     implementation files('libs/UPPayAssistEx.jar')
     implementation files('libs/UPPayPluginExPro.jar')
