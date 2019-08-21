@@ -69,6 +69,7 @@ __weak FlutterOupayPlugin* __FlutterOupayPlugin;
 
   } else if ([@"aliPay" isEqualToString:call.method]) {
     NSString * payInfo = call.arguments[@"payInfo"];
+    NSNumber * isSandbox = call.arguments[@"isSandbox"];
     NSString * urlScheme = call.arguments[@"urlScheme"];
     
     self.alipay_urlScheme = urlScheme;
@@ -78,8 +79,9 @@ __weak FlutterOupayPlugin* __FlutterOupayPlugin;
   } else if ([@"wechatPay" isEqualToString:call.method]) {
     NSString  * payInfo = call.arguments[@"payInfo"];
     NSString *  appId = call.arguments[@"appid"];
+    NSString * urlScheme = call.arguments[@"urlScheme"];
       
-    self.wechat_urlScheme = appId;
+    self.wechat_urlScheme = urlScheme;
 
     [OupayWechat startPay:appId payInfo:payInfo result:result ];
 
@@ -87,8 +89,9 @@ __weak FlutterOupayPlugin* __FlutterOupayPlugin;
     NSString * payInfo = call.arguments[@"payInfo"];
     NSString *  appId = call.arguments[@"appid"];
     NSNumber * isSandbox = call.arguments[@"isSandbox"];
+     NSString * urlScheme = call.arguments[@"urlScheme"];
       
-    self.cmb_urlScheme = appId;
+    self.cmb_urlScheme = urlScheme;
 
     [OupayCMBPay startPay:appId payInfo:payInfo isSandbox:[isSandbox boolValue] viewCtrl:_viewController result:result ];
 
@@ -106,6 +109,7 @@ __weak FlutterOupayPlugin* __FlutterOupayPlugin;
 //回调通知
 - (BOOL)handleOpenURL:(NSURL*)url {
     NSLog(@"reslut = %@",url);
+    NSLog(@"url.scheme = %@",url.scheme);
     if( [url.scheme isEqualToString:self.alipay_urlScheme] ){
         return [OupayAlipay handleOpenURL:url result:self.__result];
     }else if( [url.scheme isEqualToString:self.wechat_urlScheme] ){

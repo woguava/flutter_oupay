@@ -63,23 +63,27 @@ public class FlutterOupayPlugin  implements MethodCallHandler {
     }else if (call.method.equals("unionPay")) {
       String payInfo = call.argument("payInfo");
       boolean isSandbox = call.argument("isSandbox");
+      String urlScheme = call.argument("urlScheme");
 
       oupayUnionPay.startPay(payInfo,isSandbox,result);
     }else if (call.method.equals("aliPay")) {
       String payInfo = call.argument("payInfo");
       boolean isSandbox = call.argument("isSandbox");
+      String urlScheme = call.argument("urlScheme");
 
       oupayAlipay.startPay(payInfo,isSandbox,result);
 
     }else if (call.method.equals("wechatPay")) {
       String payInfo = call.argument("payInfo");
       String appid = call.argument("appid");
+      String urlScheme = call.argument("urlScheme");
 
       oupayWechat.starPay(appid,payInfo,result);
     }else if (call.method.equals("cmbchinaPay")) {
       String payInfo = call.argument("payInfo");
       String appid = call.argument("appid");
       boolean isSandbox = call.argument("isSandbox");
+      String urlScheme = call.argument("urlScheme");
 
       oupayCmbPay.starPay(appid,payInfo,isSandbox,result);
     }else {

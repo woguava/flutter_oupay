@@ -78,7 +78,7 @@ class FlutterOupay {
       var res =  await _channel.invokeMethod('unionPay',<String, dynamic>{
         'payInfo': payInfo,
         'isSandbox': _options.isSandboxByUn,
-        'urlScheme': _options.unpayId
+        'urlScheme': _options.unpayScheme
       });
 
       final OupayResult oupayRest = new OupayResult();
@@ -107,7 +107,7 @@ class FlutterOupay {
       var res =  await _channel.invokeMethod('aliPay',<String, dynamic>{
         'payInfo': payInfo,
         'isSandbox': _options.isSandboxByAli,
-        'urlScheme': _options.alipayId
+        'urlScheme': _options.alipayScheme
       });
 
       final OupayResult oupayRest = new OupayResult();
@@ -134,7 +134,8 @@ class FlutterOupay {
     try{
       var res =  await _channel.invokeMethod('wechatPay',<String, dynamic>{
         'payInfo': payInfo,
-        'appid': _options.wechatId
+        'appid': _options.wechatId,
+        'urlScheme': _options.wechatScheme
       });
 
       final OupayResult oupayRest = new OupayResult();
@@ -162,7 +163,8 @@ class FlutterOupay {
       var res =  await _channel.invokeMethod('cmbchinaPay',<String, dynamic>{
         'payInfo': payInfo,
         'appid': _options.cmbAppId,
-        'isSandbox': _options.isSanboxByCmb
+        'isSandbox': _options.isSanboxByCmb,
+        'urlScheme': _options.cmbScheme
       });
 
       final OupayResult oupayRest = new OupayResult();
