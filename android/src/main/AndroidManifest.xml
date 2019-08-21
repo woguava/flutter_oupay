@@ -54,14 +54,12 @@
             android:windowSoftInputMode="adjustResize" />
         <!-- 招行一网通-->
         <activity android:name=".cmbapi.CMBSchemeActivity"
+            android:exported="true"
             android:launchMode="singleTop"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@android:style/Theme.Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
         </activity>
     </application>
