@@ -19,8 +19,7 @@ A oupay Flutter plugin.
   # 支付宝
   s.dependency 'AlipaySDK-iOS'
   # 微信
-  #s.dependency 'WechatOpenSDK'
-  s.dependency 'WechatOpenSDK', '1.8.2'
+  s.dependency 'WechatOpenSDK'
 
   # 银联
   s.ios.vendored_libraries = 'UPPay/**/*.a'

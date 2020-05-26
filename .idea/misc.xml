@@ -38,4 +38,7 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="Android API 26 Platform" project-jdk-type="Android SDK">
     <output url="file://$PROJECT_DIR$/example/build" />
   </component>
+  <component name="ProjectType">
+    <option name="id" value="io.flutter" />
+  </component>
 </project>

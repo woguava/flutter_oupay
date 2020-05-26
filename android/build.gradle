@@ -62,12 +62,12 @@ dependencies {
     implementation fileTree(include:['*.jar'],dir:'libs')
     implementation files('libs/fastjson-1.2.31.jar')
     // 支付宝
-    implementation files('libs/alipaySdk-15.6.4-20190611174359-noUtdid.aar')
+    implementation files('libs/alipaySdk-15.7.5-20200422171619.aar')
     //银联
     implementation files('libs/UPPayAssistEx.jar')
     implementation files('libs/UPPayPluginExPro.jar')
     // 微信
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     // 招行一网通
-    implementation files('libs/cmbsdk-release-1.0.aar')
+    implementation files('libs/cmbsdk-release-1.1.2.aar')
 }

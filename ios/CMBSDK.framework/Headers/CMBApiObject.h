@@ -6,15 +6,6 @@
 
 #import <Foundation/Foundation.h>
 
-/*! @brief 应答码
- *
- */
-enum  CMBRespCode {
-    CMBRespSuccess           = 0,    /** 成功    */
-    CMBRespError             = -1,   /** 普通错误类型    */
-    CMBRespUnknown           = -2    /**  结果未知  */
-};
-
 @interface CMBApiObject : NSObject
 
 @end
@@ -33,6 +24,9 @@ enum  CMBRespCode {
 
 /** 可选，app已经安装时要跳转到的招商银行APP具体功能的url，需业务功能给出。默认为支付的CMBJumpUrl  **/
 @property (nonatomic, strong) NSString *CMBJumpUrl;
+
+/** 可选，用于控制H5场景下导航栏是否展示，默认展示  **/
+@property (nonatomic, assign) BOOL navigationBarHidden;
 
 @end
 

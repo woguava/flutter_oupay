@@ -7,6 +7,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "CMBApiObject.h"
+#import "CMBWebview.h"
+
 @protocol CMBApiDelegate <NSObject>
 @optional
 
@@ -54,9 +56,24 @@
     viewController:(UIViewController *)viewController
           delegate:(id<CMBApiDelegate>)delegate;
 
+/*! @brief 获取招行浏览器控件。
+ *
+ * 函数调用后，会根据请求信息生成招行浏览器并打开H5页面，可通过浏览器获取响应结果。
+ * 注：仅在商户需要自定义实现导航栏时调用。
+ * @param request 具体的发送请求，在调用函数后，请自己释放，具体内容参考CMBRequest参数说明。
+ * @param appid 商户在招商银行商户系统中的appid。
+ * @param delegate 对象，用来接收请求执行回调和标题变更的消息。
+ * @return 返回浏览器控件，参数非法则返回nil。
+ */
++(CMBWebview *) initCMBWebview: (CMBRequest *)request
+                         appid:(NSString *)appid
+                   delegate:(id<CMBWebviewDelegate>)delegate;
+
+
 /*! @brief 发送请求打开H5支付页面或者跳转到招商银行APP完成支付，并等待招商银行APP返回结果。
  *
  * 函数调用后，会根据是否安装招商银行APP切换到招商银行APP的界面或直接打开H5支付界面， 第三方应用程序等待招商银行APP回调errBlock或succBlock。
+ * 注：普通商户请勿使用该接口
  * @param payUrl 具体的支付请求（URL+支付参数）。
  * @param appid 选传，商户在招商银行相应的业务功能商户系统中的appid，请产品经理给出。
  * @param method 选传，业务功能类型，请产品经理给出。
